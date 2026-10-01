@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.SnipNotes" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#2F6B5E</item>
+        <item name="colorSecondary">#2F6B5E</item>
+    </style>
+    <color name="icon_bg">#2F6B5E</color>
+</resources>

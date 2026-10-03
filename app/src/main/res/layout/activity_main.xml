@@ -70,6 +70,12 @@
         android:text="Auto-save selected text" />
 
     <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/toolbarSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chrome &amp; other apps: tap “Save to notes” for me" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/sourceSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

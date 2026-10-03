@@ -11,6 +11,7 @@ object Prefs {
     private const val TOAST = "show_toast"
     private const val SKIP_EDIT = "skip_editable"
     private const val LINKED = "linked_uri"
+    private const val TOOLBAR = "toolbar_capture"
 
     private fun sp(c: Context) = c.getSharedPreferences(NAME, Context.MODE_PRIVATE)
 
@@ -26,6 +27,10 @@ object Prefs {
     /** Ignore selections inside text boxes you are typing in (your own drafts, search bars). */
     fun skipEditable(c: Context) = sp(c).getBoolean(SKIP_EDIT, true)
     fun setSkipEditable(c: Context, v: Boolean) = sp(c).edit().putBoolean(SKIP_EDIT, v).apply()
+
+    /** Auto-tap "Save to notes" in the selection menu for apps (like Chrome) that don't report selections. */
+    fun toolbarCapture(c: Context) = sp(c).getBoolean(TOOLBAR, true)
+    fun setToolbarCapture(c: Context, v: Boolean) = sp(c).edit().putBoolean(TOOLBAR, v).apply()
 
     fun linkedUri(c: Context): Uri? = sp(c).getString(LINKED, null)?.let(Uri::parse)
     fun setLinkedUri(c: Context, u: Uri?) = sp(c).edit().putString(LINKED, u?.toString()).apply()

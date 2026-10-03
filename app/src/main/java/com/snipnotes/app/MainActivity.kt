@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         batteryBtn.setOnClickListener { requestKeepAlive() }
 
         bindSwitch(R.id.autoSwitch, Prefs.autoCapture(this)) { Prefs.setAutoCapture(this, it); refreshStatus() }
+        bindSwitch(R.id.toolbarSwitch, Prefs.toolbarCapture(this)) { Prefs.setToolbarCapture(this, it) }
         bindSwitch(R.id.sourceSwitch, Prefs.addSource(this)) { Prefs.setAddSource(this, it) }
         bindSwitch(R.id.toastSwitch, Prefs.showToast(this)) { Prefs.setShowToast(this, it) }
         bindSwitch(R.id.editableSwitch, Prefs.skipEditable(this)) { Prefs.setSkipEditable(this, it) }
@@ -116,8 +117,8 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {
                 status.text = "● Capturing in the background"
-                statusDetail.text = "Select text anywhere and hold still for a second — it’s added here. " +
-                    "If an app doesn’t trigger it, pick “Save to notes” from the selection menu."
+                statusDetail.text = "Select text anywhere and leave it for a second — it’s added here. " +
+                    "In Chrome and similar apps the ⋮ menu opens briefly and “Save to notes” is tapped for you."
             }
         }
         enableBtn.visibility = if (enabled) View.GONE else View.VISIBLE

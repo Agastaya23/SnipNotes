@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SnipNotes</string>
     <string name="a11y_label">SnipNotes auto-capture</string>
-    <string name="a11y_description">Runs in the background and saves any text you select in other apps into your SnipNotes document, so you never have to copy and paste. Password fields are always ignored.</string>
+    <string name="a11y_description">Runs in the background and saves any text you select in other apps into your SnipNotes document, so you never have to copy and paste. In apps like Chrome it taps “Save to notes” in the selection menu for you. Password fields are always ignored.</string>
     <string name="process_text_label">Save to notes</string>
     <string name="tile_label">SnipNotes capture</string>
     <string name="notes_hint">Selected text from any app lands here automatically…</string>

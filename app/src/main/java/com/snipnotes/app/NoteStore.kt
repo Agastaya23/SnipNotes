@@ -70,6 +70,16 @@ object NoteStore {
         return true
     }
 
+    /** True if [text] looks like the previous snippet with the selection extended or shrunk. */
+    @Synchronized
+    fun isAdjustment(text: String): Boolean {
+        val last = lastSnippet ?: return false
+        val t = text.trim()
+        if (t == last) return false
+        if (android.os.SystemClock.elapsedRealtime() - lastSnippetAt > 20_000) return false
+        return t.contains(last) || last.contains(t)
+    }
+
     private fun format(c: Context, snippet: String, pkg: String?): String {
         val sb = StringBuilder(snippet.trim())
         if (Prefs.addSource(c)) {

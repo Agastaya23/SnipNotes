@@ -20,8 +20,17 @@ class SaveTextActivity : Activity() {
         }?.toString()?.trim()
 
         if (!text.isNullOrEmpty()) {
-            val saved = NoteStore.addSnippet(this, text, referrer?.host)
-            Toast.makeText(this, if (saved) "Saved to notes" else "Already in notes", Toast.LENGTH_SHORT).show()
+            val adjusting = NoteStore.isAdjustment(text)
+            val saved = NoteStore.addSnippet(this, text, referrer?.host, replaceLast = adjusting)
+            if (Prefs.showToast(this)) {
+                val words = text.split(Regex("\\s+")).size
+                val msg = when {
+                    !saved -> "Already in notes"
+                    adjusting -> "Snippet updated ($words words)"
+                    else -> "Saved to notes ($words words)"
+                }
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            }
         }
         finish()
     }
